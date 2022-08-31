@@ -29,7 +29,7 @@ namespace Pea2.Data
                             {
                                 tipo = new Categoria();
                                 tipo.IdCategoria = int.Parse(lector[0].ToString());
-                                tipo.Nombre = lector[1].ToString();
+                                tipo.Nombre = lector[2].ToString();
                                 listado.Add(tipo);
                             }
                         }

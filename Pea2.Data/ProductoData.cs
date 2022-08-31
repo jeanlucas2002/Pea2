@@ -33,7 +33,7 @@ namespace Pea2.Data
                                 Producto.Precio = double.Parse(lector[3].ToString());
                                 Producto.Stock = int.Parse(lector[4].ToString());
                                 Producto.Observacion = lector[5].ToString();
-                                Producto.IdCategoria = int.Parse(lector[6].ToString());
+                                Producto.IdCategoria = int.Parse(lector[7].ToString());
 
                                 listado.Add(Producto);
                             }
@@ -64,7 +64,7 @@ namespace Pea2.Data
                             Producto.Precio = double.Parse(lector[3].ToString());
                             Producto.Stock = int.Parse(lector[4].ToString());
                             Producto.Observacion = lector[5].ToString();
-                            Producto.IdCategoria = int.Parse(lector[6].ToString());
+                            Producto.IdCategoria = int.Parse(lector[7].ToString());
                         }
                     }
                 }

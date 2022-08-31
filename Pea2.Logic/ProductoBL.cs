@@ -38,6 +38,13 @@ namespace Pea2.Logic
         {
             var ProductoData = new ProductoData();
             return ProductoData.Eliminar(id);
+
+
+
+
         }
-    }
-}
+        
+    
+          }
+}   
+

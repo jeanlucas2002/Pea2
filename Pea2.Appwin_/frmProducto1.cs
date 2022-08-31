@@ -10,11 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Pea2.AppWin
+namespace Pea2.Appwin_
 {
-    public partial class frmProducto : Form
+    public partial class frmProducto1 : Form
     {
-        public frmProducto()
+        public frmProducto1()
         {
             InitializeComponent();
         }
@@ -30,28 +30,27 @@ namespace Pea2.AppWin
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
+            var nuevoProducto = new Producto();
+            var frm = new frmProductoEdit(nuevoProducto);
+            if (frm.ShowDialog() == DialogResult.OK)
             {
-                var nuevoProducto = new Producto();
-                var frm = new frmProductoEdit1(nuevoProducto);
-                if (frm.ShowDialog() == DialogResult.OK)
+                var exito = ProductoBL.Insertar(nuevoProducto);
+                if (exito)
                 {
-                    var exito = ProductoBL.Insertar(nuevoProducto);
-                    if (exito)
-                    {
-                        MessageBox.Show("El Producto ha sido registrado", "Parcial",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        cargarDatos();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se ha podido registrar el Producto ", "Parcial",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    MessageBox.Show("El Producto ha sido registrado", "Parcial",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarDatos();
                 }
+                else
+                {
+                    MessageBox.Show("No se ha podido registrar el Producto ", "Parcial",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
 
-        private void frmProducto_Load(object sender, EventArgs e)
+        private void frmProducto1_Load(object sender, EventArgs e)
         {
             cargarDatos();
         }
@@ -63,7 +62,7 @@ namespace Pea2.AppWin
                 int filaActual = dgvListado.CurrentRow.Index;
                 var idProducto = int.Parse(dgvListado.Rows[filaActual].Cells[0].Value.ToString());
                 var productoEditar = ProductoBL.BuscarPorId(idProducto);
-                var frm = new frmProductoEdit1(productoEditar);
+                var frm = new frmProductoEdit(productoEditar);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     var exito = ProductoBL.Actualizar(productoEditar);
@@ -109,7 +108,5 @@ namespace Pea2.AppWin
             }
         }
     }
-}
 
-        
-    
+}
